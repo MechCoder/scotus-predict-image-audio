@@ -8,9 +8,7 @@
  * face_extractor.ipynb: this script extracts a face from an image. It will prompt you to provide a path to the relevant image file. By default this script stores the output faces in the directory "lawyer_faces/".
 
 3. Predict Lawyer face trait ratings
-  * predict_lawyer_traits.ipynb: this script predicts trait ratings for a set of face images (by default it looks for the face images in the "lawyer_faces/" folder (see #2 above).
+  * predict_lawyer_traits.ipynb: this script predicts trait ratings for a set of face images (by default it looks for the face images in the "lawyer_faces/" folder (see #2 above), and it saves the ratings for each lawyer as "lawyer_trait_predictions.csv"
 
 4. Aggregate lawyer ratings by side (petitioner/respondent)
- * cases_join_traits.ipynb: this script takes the predicted lawyer ratings from section 3, and it averages the ratings across the petitioner or respondent side for each case. It produces two output files:
-  1. petitioner_predictions.csv for each case
-  2. respondent_predictions.csv for each case
+ * cases_join_traits.ipynb: this script takes the predicted lawyer ratings from section 3, and it averages the ratings across the petitioner or respondent side for each case. It produces two output files: petitioner_predictions.csv and respondent_predictions.csv

@@ -1,3 +1,5 @@
+## Step by step processes to replicate image feature generation:
+
 1. Train trait prediction models
   * image_HOG_trait_regression.ipynb: this script trains facial feature prediction models on Bainbridge's face data applying HOG processing. It stores the models in the "../data/image_data/tmp" folder. 
   * image_PCA_trait_regression.ipynb: this script trains facial feature prediction models on Bainbridge's face data without applying HOG processing. It stores the models in the "../data/image_data/tmp" folder.

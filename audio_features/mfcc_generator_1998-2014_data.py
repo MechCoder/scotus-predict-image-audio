@@ -65,22 +65,4 @@ print(fileFeatureValues.shape)
 
 ##convert fileFeatureValues and fileDocketValues to data frames
 fileFeatureDf=pd.DataFrame(fileFeatureValues, columns=fileFeatureColumns)
-fileFeatureDf.to_csv("data/modifiedInput/mfccFileFeatures.csv")
-
-#audio_label_records = pd.read_csv("data/pilot6b_long_only_f_n_outcomes.csv")
-#def check(x):
-#    x_list = x.split('--')
-#    tmp = x_list[0]
-#    if len(tmp) == 1:
-#        x_list[0] = "0" + tmp
-#    return "-".join(x_list)
-#
-#audio_label_records["CaseNum"] = audio_label_records["CaseNum"].apply(lambda x: check(x))
-#fileLabelRowAndFeaturesDf = audio_label_records.merge(fileFeatureDf, on="Audio", how="inner")
-#fileLabelRowAndFeaturesDf = fileLabelRowAndFeaturesDf.fillna(0.0)
-#
-#labelCols = ['CaseNum','zAggressive', 'zAttractive', 'zConfident', 'zMasculine', 'zWin', 'zQuality', 'zIntel', 'zTrust']
-#columns = np.concatenate((fileFeatureColumns,np.array(labelCols)))
-#
-#fileLabelRowAndFeaturesDf = fileLabelRowAndFeaturesDf[columns]
-#fileLabelRowAndFeaturesDf.to_csv("data/modifiedInput/merge_labels_with_mfcc_features.csv")
+fileFeatureDf.to_csv("data/input/mfccFileFeatures_1998_2014.csv")

@@ -1,6 +1,6 @@
 1. Train trait prediction models
-  * image_HOG_trait_regression.ipynb: this script trains facial feature prediction models on the Bainbridge's face data applying HOG processing. It stores the models in the "tmp" folder. 
-  * image_PCA_trait_regression.ipynb: this script trains facial feature prediction models on the Bainbridge's face data without applying HOG processing. It stores the models in the "tmp" folder.
+  * image_HOG_trait_regression.ipynb: this script trains facial feature prediction models on Bainbridge's face data applying HOG processing. It stores the models in the "tmp" folder. 
+  * image_PCA_trait_regression.ipynb: this script trains facial feature prediction models on Bainbridge's face data without applying HOG processing. It stores the models in the "tmp" folder.
   * PCA_vs_HOG-PCA.md: this file compares the performance of trait predition models with vs. without HOG processing.
 
 2) Extract lawyer faces from lawyer images

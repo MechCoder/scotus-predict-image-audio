@@ -52,7 +52,7 @@ def check(x):
 audio_ratings["docket"] = audio_ratings["docket"].apply(lambda x: check(x))
 raw_data = raw_data.merge(audio_ratings, on="docket", how="inner")
 raw_data = raw_data.fillna(0.0)
-raw_data.to_csv("data/input/merge_scdb_with_audio_features.csv")
+raw_data.to_csv("data/input/audio_cont_with_raw_data.csv")
 
 f_data = f_data.merge(audio_ratings, on="docket", how="inner")
-f_data.to_csv("data/input/merge_scdb_with_audio_data.csv")
+f_data.to_csv("data/input/audio_cont_with_features.csv")

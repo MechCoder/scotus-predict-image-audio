@@ -13,8 +13,8 @@ import numpy
 
 
 # In[2]:
-raw_data = pd.read_csv("data/input/audio_cont_and_images_with_raw_data.csv")
-feature_df = pd.read_csv("data/input/audio_cont_and_images_with_features.csv")
+raw_data = pd.read_csv("data/input/audio_cont_images_with_raw_data.csv")
+feature_df = pd.read_csv("data/input/audio_cont_images_with_features.csv")
 feature_df.drop(added_features, axis=1, inplace=True)
 feature_df.drop(image_Features, axis=1, inplace=True)
 

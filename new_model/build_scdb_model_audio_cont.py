@@ -1,28 +1,39 @@
 """
-This script builds the exising Supreme Court mohdel using a growing ensemble
+This script builds the exising Supreme Court model using a growing ensemble
 model increasing the number of random forests by 100 in every term.
-The difference is that we use both audio and image features.
+The difference is the audio sample of the argument of each lawyer
+is rated by a mTurk worker. This is normalized using the mean and std of each
+mTurk worker. We are limiting our sample size to only those years for which
+we have the ratings.
+
+The added features are the attractiveness, confidence etc of the petitioner
+and respondant separately.
 """
 
 # Imports
 import numpy as np
 import pandas as pd
-from model import *
-import sklearn
 import numpy
+import pandas
+import sklearn
 
+
+# Project imports
+from model import *
 
 # In[2]:
-raw_data = pd.read_csv("data/input/audio_cont_images_with_raw_data.csv")
-feature_df = pd.read_csv("data/input/audio_cont_images_with_features.csv")
+
+raw_data = pd.read_csv("data/input/audio_cont_with_raw_data.csv")
+print(np.unique(raw_data.docket).shape)
 
 # Get feature data
+feature_df = pd.read_csv("data/input/audio_cont_with_features.csv")
 for col in feature_df.columns:
     if col.startswith('Unnamed'):
-        feature_df.drop(col, axis=1, inplace=True)
+        feature_df.drop(col, inplace=True, axis=1)
 feature_df.drop("docket", inplace=True, axis=1)
 
-print(np.unique(raw_data.docket).shape)
+
 f_imp = np.zeros(len(added_features))
 imps = np.zeros(len(feature_df.columns))
 
@@ -50,6 +61,7 @@ case_acc_score = 0.0
 
 # Number of years between "forest fires"
 reset_interval = 9999
+
 
 # Setup training time period
 
@@ -148,8 +160,7 @@ print("RF model")
 print("="*32)
 print(sklearn.metrics.classification_report(target_actual, target_predicted))
 print(sklearn.metrics.confusion_matrix(target_actual, target_predicted))
-justice_acc_score = sklearn.metrics.accuracy_score(target_actual, target_predicted)
-print(justice_acc_score)
+print(sklearn.metrics.accuracy_score(target_actual, target_predicted))
 print("="*32)
 print("")
 
@@ -158,7 +169,7 @@ print("Dummy model")
 print("="*32)
 print(sklearn.metrics.classification_report(target_actual, target_dummy))
 print(sklearn.metrics.confusion_matrix(target_actual, target_dummy))
-a_s = sklearn.metrics.accuracy_score(target_actual, target_dummy)
+print(sklearn.metrics.accuracy_score(target_actual, target_dummy))
 print("="*32)
 print("")
 
@@ -212,9 +223,8 @@ print(sklearn.metrics.classification_report(case_classification_data["case_outco
                                             case_classification_data["rf_predicted_case"]))
 print(sklearn.metrics.confusion_matrix(case_classification_data["case_outcome_disposition"],
                                             case_classification_data["rf_predicted_case"]))
-case_acc_score = sklearn.metrics.accuracy_score(case_classification_data["case_outcome_disposition"],
-                                                 case_classification_data["rf_predicted_case"])
-print(case_acc_score)
+print(sklearn.metrics.accuracy_score(case_classification_data["case_outcome_disposition"],
+                                     case_classification_data["rf_predicted_case"]))
 print("="*32)
 print("")
 
@@ -232,7 +242,10 @@ print("")
 
 print("case-wise accuracy score " + str(case_acc_score))
 print("justice-wise accuracy score " + str(justice_acc_score))
-
+imps = imps / len(list(term_range))
+is_present = np.in1d(feature_df.columns, added_features)
+print("feature importances")
+print(imps[is_present])
 
 arg_indices = np.argsort(-imps)
 print("top 30")

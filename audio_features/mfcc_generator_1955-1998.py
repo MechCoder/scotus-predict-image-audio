@@ -67,4 +67,4 @@ for path, subdirs, files in os.walk("unzippedAudioData1955To1988"):
 mfccColumns = np.array(list(range(1,131)))
 fileFeatureColumns = np.concatenate ((np.array(["docket","lawyer_name"]) , mfccColumns))
 fileFeatureDf=pd.DataFrame(fileFeatureLongValues, columns=fileFeatureColumns)
-fileFeatureDf.to_csv("restData/modifiedInput/allFilesMfcc130FeaturesWithDocketAndLawyerName.csv")
+fileFeatureDf.to_csv("data/input/mfccFileFeatures_1955_1998.csv")

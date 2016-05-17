@@ -7,6 +7,7 @@ from sklearn.metrics import confusion_matrix
 import pandas
 import numpy as np
 import numpy
+from model import *
 
 raw_data = pd.read_csv("data/input/images_with_raw_data.csv")
 raw_data.drop(['Unnamed: 0'], axis=1, inplace=True)
@@ -15,7 +16,8 @@ feature_df = pd.read_csv("data/input/images_with_features.csv")
 for col in feature_df.columns:
     if col.startswith('Unnamed'):
         feature_df.drop(col, axis=1, inplace=True)
-feature_df.drop(imageFeatures, axis=1, inplace=True)
+feature_df.drop(image_Features, axis=1, inplace=True)
+feature_df.drop("docket", axis=1, inplace=True)
 print(feature_df.columns)
 
 # Output basic quantities for sample

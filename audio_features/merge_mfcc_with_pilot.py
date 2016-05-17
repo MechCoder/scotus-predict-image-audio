@@ -6,7 +6,7 @@ added_columns = ['zAggressive', 'zAttractive', 'zConfident',
 columns = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13']
 
 
-mfcc = pd.read_csv("data/input/mfccFileFeatures_1998_2014.csv")
+mfcc = pd.read_csv("data/input/mfccFileFeatures_1955_1998.csv")
 pilot = pd.read_csv("data/input/pilot6b_long_only_f_n_outcomes.csv")
 pilot = pilot.fillna(0.0)
 pilot_columns = pilot.groupby('Audio')[added_columns].mean().reset_index()

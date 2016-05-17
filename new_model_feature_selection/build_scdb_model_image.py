@@ -76,7 +76,7 @@ for term in term_range:
     # Build or grow a model depending on initial/reset condition
     if not m:
         # Grow an initial forest
-        m = RandomForestClassifier(n_estimators=initial_trees + (term_count * trees_per_term), 
+        m = RandomForestClassifier(n_estimators=initial_trees + (term_count * trees_per_term),
                                    class_weight="balanced_subsample",
                                    warm_start=True, n_jobs=-1, random_state=0)
     else:
@@ -288,10 +288,10 @@ for n_feature in n_features:
             # Build or grow a model depending on initial/reset condition
             if not m:
                 # Grow an initial forest
-                m = sklearn.ensemble.RandomForestClassifier(n_estimators=initial_trees + (term_count * trees_per_term), 
-                                                            class_weight="balanced_subsample",
-                                                            warm_start=True,
-                                                            n_jobs=-1, random_state=0)
+                m = RandomForestClassifier(n_estimators=initial_trees + (term_count * trees_per_term), 
+                                           class_weight="balanced_subsample",
+                                           warm_start=True,
+                                           n_jobs=-1, random_state=0)
             else:
                 # Grow the forest by increasing the number of trees (requires warm_start=True)
                 m.set_params(n_estimators=initial_trees + (term_count * trees_per_term))
@@ -301,7 +301,7 @@ for n_feature in n_features:
             target_data_train)
                   
             # Fit the "dummy" model
-            d = sklearn.dummy.DummyClassifier(strategy="most_frequent")
+            d = DummyClassifier(strategy="most_frequent")
             d.fit(feature_data_train, target_data_train)
                       
             # Perform forest predictions
@@ -333,9 +333,9 @@ for n_feature in n_features:
     # Compare model
     print("RF model")
     print("="*32)
-    print(sklearn.metrics.classification_report(target_actual, target_predicted))
-    print(sklearn.metrics.confusion_matrix(target_actual, target_predicted))
-    justice_acc_score = sklearn.metrics.accuracy_score(target_actual, target_predicted)
+    print(classification_report(target_actual, target_predicted))
+    print(confusion_matrix(target_actual, target_predicted))
+    justice_acc_score = accuracy_score(target_actual, target_predicted)
     print(justice_acc_score)
     justice_wise_scores.append(justice_acc_score)
     print("="*32)
@@ -344,9 +344,9 @@ for n_feature in n_features:
     # Dummy model
     print("Dummy model")
     print("="*32)
-    print(sklearn.metrics.classification_report(target_actual, target_dummy))
-    print(sklearn.metrics.confusion_matrix(target_actual, target_dummy))
-    a_s = sklearn.metrics.accuracy_score(target_actual, target_dummy)
+    print(classification_report(target_actual, target_dummy))
+    print(confusion_matrix(target_actual, target_dummy))
+    a_s = accuracy_score(target_actual, target_dummy)
     print("="*32)
     print("")
     
@@ -395,12 +395,12 @@ for n_feature in n_features:
     # Compare model
     print("RF model")
     print("="*32)
-    print(sklearn.metrics.classification_report(case_classification_data["case_outcome_disposition"],
-                                                case_classification_data["rf_predicted_case"]))
-    print(sklearn.metrics.confusion_matrix(case_classification_data["case_outcome_disposition"],
-                                            case_classification_data["rf_predicted_case"]))
-    case_acc_score = sklearn.metrics.accuracy_score(case_classification_data["case_outcome_disposition"],
-                                                    case_classification_data["rf_predicted_case"])
+    print(classification_report(case_classification_data["case_outcome_disposition"],
+                                case_classification_data["rf_predicted_case"]))
+    print(confusion_matrix(case_classification_data["case_outcome_disposition"],
+                           case_classification_data["rf_predicted_case"]))
+    case_acc_score = accuracy_score(case_classification_data["case_outcome_disposition"],
+                                    case_classification_data["rf_predicted_case"])
     case_wise_scores.append(case_acc_score)
     print("="*32)
     
@@ -409,12 +409,12 @@ for n_feature in n_features:
     # Dummy model
     print("Dummy model")
     print("="*32)
-    print(sklearn.metrics.classification_report(case_classification_data["case_outcome_disposition"],
-                                                case_classification_data["dummy_predicted_case"]))
-    print(sklearn.metrics.confusion_matrix(case_classification_data["case_outcome_disposition"],
-                                            case_classification_data["dummy_predicted_case"]))
-    print(sklearn.metrics.accuracy_score(case_classification_data["case_outcome_disposition"],
-                                        case_classification_data["dummy_predicted_case"]))
+    print(classification_report(case_classification_data["case_outcome_disposition"],
+                                case_classification_data["dummy_predicted_case"]))
+    print(confusion_matrix(case_classification_data["case_outcome_disposition"],
+                           case_classification_data["dummy_predicted_case"]))
+    print(accuracy_score(case_classification_data["case_outcome_disposition"],
+                         case_classification_data["dummy_predicted_case"]))
     print("="*32)
     print("")
                                             
@@ -425,6 +425,3 @@ for n_feature in n_features:
     print(case_wise_scores)
     print("justice extras")
     print(justice_wise_scores)
-
-
-

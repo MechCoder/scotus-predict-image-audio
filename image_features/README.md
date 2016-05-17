@@ -1,4 +1,5 @@
 ## Image feature generation pipeline:
+#### You should follow these instructions sequentially, each step builds off the last. In order for these scripts to work, you must have the required data folder in the parent directory.
 
 1. Train trait prediction models using **image_HOG_trait_regression.ipynb**: this script trains facial feature prediction models on Bainbridge's face data applying HOG processing. It stores the models in the "../data/image_data/tmp" folder. 
 
@@ -15,4 +16,4 @@
 6. Add lawyer ratings to the baseline model using **join_to_baseline_model.ipynb**. This script takes the aggregate lawyer ratings on each side (see step 5), and it adds them to the baseline model's input data.
 
 #### That's it! 
-#### Now follow the instructions in the "new_model" using these image features.
+#### ...now just follow the instructions in the "new_model" to use these image features.

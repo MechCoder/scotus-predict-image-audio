@@ -5,7 +5,7 @@ We generate ratings for the various facial and voice traits Supreme Court advoca
 For details, see the **audio_features** and **image_features** subdirectories.
 Please note that many of these scripts are not reproducible without non-public data, sorry.
 
-The feature importances obtained in this analysis are shown below (we can see that how a lawyer sounds and looks is associated with Supreme Court decisions).
+The feature importances obtained in this analysis are shown below (we can see that how a lawyer sounds and looks has some importance in predicting Supreme Court decisions).
 
 Feature importances for voice traits.
 

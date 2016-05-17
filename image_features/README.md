@@ -1,11 +1,11 @@
 ## Image feature generation pipeline:
-#### You should follow these instructions sequentially, each step builds off the last. In order for these scripts to work, you must have the required data folder in the parent directory.
+#### You should follow these instructions sequentially, each step builds off the last. In order for these scripts to work, you must have the required "data" folder in the parent directory. 
 
-1. Train trait prediction models using **image_HOG_trait_regression.ipynb**: this script trains facial feature prediction models on Bainbridge's face data applying HOG processing. It stores the models in the "../data/image_data/tmp" folder. 
+1. Train trait prediction models using **image_HOG_trait_regression.ipynb**: this script trains facial feature prediction models on Bainbridge's face data applying HOG processing. It stores the models in the "../data/image_data/tmp" folder. This script requires that the scikit-image package be installed.
 
 2. Extract lawyer faces from lawyer images
  * **get_img_and_pdfs.ipynb**: this script takes a batch of results of the mturk lawyer image gathering task (batches are stored in "../data/image_data/mturk") and it downloads and saves all the images to the "lawyer_images/" directory.
- * **face_extractor.ipynb**: this script extracts a face from an image. It will prompt you to provide a path to the relevant image files ("../data/image_data/img"). By default this script stores the output faces in the directory "lawyer_faces/".
+ * **face_extractor.ipynb**: this script extracts a face from an image (it depends on the OpenCV python package). It will prompt you to provide a path to the relevant image files ("../data/image_data/img"). By default this script stores the output faces in the directory "lawyer_faces/".
 
 3. Predict Lawyer face trait ratings with **predict_lawyer_traits.ipynb**: this script predicts trait ratings for a set of face images (by default it looks for the face images in the "lawyer_faces/" folder), and it saves the ratings for each lawyer as "lawyer_trait_predictions.csv"
 
@@ -16,4 +16,4 @@
 6. Add lawyer ratings to the baseline model using **join_to_baseline_model.ipynb**. This script takes the aggregate lawyer ratings on each side (see step 5), and it adds them to the baseline model's input data.
 
 #### That's it! 
-#### ...now just follow the instructions in the "new_model" to use these image features.
+#### ...now just follow the instructions in the "new_model" folder to use these image features.

@@ -100,7 +100,7 @@
  
   b. Because there are multiple mTurk worker who have rated the same audio clip, we average their z-scores and then binarize them.
   
-  Run docket_pClassLabel_rClassLabel_1955-1998.py
+  Run docket_pClassLabel_rClassLabel_1998-2014.py
   Input
    * data/input/pilot6b_long_only_f_n_outcomes.csv
   

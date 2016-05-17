@@ -59,10 +59,10 @@
   Run modify_advocates.csv
   
   Input
-  data/input/advocates.csv
+   * data/input/advocates.csv
 
   Output
-  data/input/modifiedAdvocates.csv 
+   * data/input/modifiedAdvocates.csv 
   
 6. Joining modifiedAdvocates.csv and mfccFileFeatures_1955_1998.csv based on lawyer’s name. (modifiedAdvocates.csv contains information about the docket and also information regarding if the lawyer was a petitioner or a respondent)
   
@@ -97,6 +97,7 @@
   
 9. 
   a. We binarize the z-scores by setting a threshold: if a z-score was positive, we replaced it with 1, if it was negative we replaced it with -1.
+ 
   b. Because there are multiple mTurk worker who have rated the same audio clip, we average their z-scores and then binarize them.
   
   Run docket_pClassLabel_rClassLabel_1955-1998.py

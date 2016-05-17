@@ -1,7 +1,7 @@
 ## New supreme court model with audio and image features.
 
 Every script has to be run from the root directory in the following way.
-python3 new_model/build_scdb_model_x.py
+**python3 new_model/build_scdb_model_x.py**
 
 Scripts here compare the old supreme court model to the new supreme court model.
 Each script has a counterpart that has a ``_removed`` suffix which runs the same
@@ -28,22 +28,22 @@ and **image_features** subdirectories.
 
 Here is a short description of all the scripts.
 
-* *build_scdb_model_audio_binarize.py*:
+* **build_scdb_model_audio_binarize.py**:
   Audio ratings are binarized such that when > greater than mean, a positive label is given
      and when < than mean, a negative label is given. These ratings are then added to
      the features of the original data.
 
-* *build_scdb_model_audio_binarize_image.py*:
+* **build_scdb_model_audio_binarize_image.py**:
   Audio ratings are binarized such that when > greater than mean, a positive label is given
   and when < than mean, a negative label is given. These are addhesed with the audio ratings
   which are then added to the faetures of the original data.
 
-* *build_scdb_model_audio_cont.py*:
+* **build_scdb_model_audio_cont.py**:
   Append the audio ratings as they are to the original data.
 
-* *build_scdb_model_audio_cont_image.py*:
+* **build_scdb_model_audio_cont_image.py**:
   Append the audio ratings after merging with the continuous image ratings to the features of
   the original data.
 
-* *build_scdb_model_audio_cont_image.py*:
+* **build_scdb_model_audio_cont_image.py**:
   Append the continuous image ratings to the original data.

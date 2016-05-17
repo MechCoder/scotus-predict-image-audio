@@ -1,7 +1,7 @@
 ## New supreme court model with audio and image features.
 
-Every script has to be run from the root directory in the following way.
-**python3 new_model/build_scdb_model_x.py**
+Every script has to be run from the root directory **scotus-predict-image-audio**
+in the following way **python3 new_model/build_scdb_model_x.py**
 
 Scripts here compare the old supreme court model to the new supreme court model.
 Each script has a counterpart that has a ``_removed`` suffix which runs the same
@@ -12,7 +12,7 @@ The following apply to all scripts that have the term **audio** in them.
 For every lawyer, we have 8 new features which include "Aggressive", "Attractive",
 "Confident", "Intelligent", "Masculine", "Quality", "Trust" and "Win" which are
 are obtained by rating the audio transcript of the lawyer. For every case we have
-16 new features, 8 of which include the averaged ratings of all the lawyers across
+16 new features, 8 of which include the averagen3d ratings of all the lawyers across
 the petitioner side and the other 8 include the averaged ratings of all the lawyers
 across the respondant side.
 

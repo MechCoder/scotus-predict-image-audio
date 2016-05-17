@@ -5,9 +5,9 @@
 
 import pandas as pd
 from model import *
-audio_data = pd.read_csv("data/modifiedInput/completeAudioDataClssification.csv")
-raw_data = pd.read_csv("data/modifiedInput/remove_features_unknown.csv")
-f_data = pd.read_csv("data/modifiedInput/remove_data_unknown.csv")
+audio_data = pd.read_csv("data/input/docket_p_r_audio_ratings_1955-2014.csv")
+raw_data = pd.read_csv("data/input/remove_features_unknown.csv")
+f_data = pd.read_csv("data/input/remove_data_unknown.csv")
 
 
 # In[17]:
@@ -41,8 +41,8 @@ for addedFeature in added_features:
     raw_data[addedFeature][raw_data[addedFeature] < 0] = -1
     raw_data[addedFeature][raw_data[addedFeature] >= 0] = 1
     
-raw_data.to_csv("data/output/mergeComplete_audio_rawData.csv")
-f_data.to_csv("data/output/mergeComplete_audio_Featuredata.csv")
+raw_data.to_csv("data/input/audio_binarize_with_raw_data.csv")
+f_data.to_csv("data/input/audio_binarize_with_features.csv")
 
 
 # In[ ]:

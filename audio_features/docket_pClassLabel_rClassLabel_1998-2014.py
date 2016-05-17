@@ -5,14 +5,14 @@
 
 import pandas as pd
 from model import *
-audio_files = pd.read_csv("data/pilot6b_long_only_f_n_outcomes.csv")
+audio_files = pd.read_csv("data/input/pilot6b_long_only_f_n_outcomes.csv")
 
 
 # In[10]:
 
 import pandas as pd
 
-audio_files = pd.read_csv("data/pilot6b_long_only_f_n_outcomes.csv")
+audio_files = pd.read_csv("data/input/pilot6b_long_only_f_n_outcomes.csv")
 cols = ['zAggressive', 'zAttractive', 'zConfident','zIntel', 'zMasculine', 'zQuality', 'zTrust','zWin']
 for col in cols:
     audio_files[col][audio_files[col] < 0]=-1
@@ -66,10 +66,7 @@ print (audio_ratings.columns)
 
 # In[12]:
 
-audio_ratings.to_csv("restData/modifiedInput/docket_p_r_audioSplit.csv")
-
-
-# In[ ]:
+audio_ratings.to_csv("data/input/docket_p_r_audio_ratings_1998_2014.csv")
 
 
 

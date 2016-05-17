@@ -1,5 +1,5 @@
 ## Image feature generation pipeline:
-#### You should follow these instructions sequentially, each step builds off the last. In order for these scripts to work, you must have the required data folder in the parent directory.
+#### You should follow these instructions sequentially, each step builds off the last. In order for these scripts to work, you must have the required "data" folder in the parent directory.
 
 1. Train trait prediction models using **image_HOG_trait_regression.ipynb**: this script trains facial feature prediction models on Bainbridge's face data applying HOG processing. It stores the models in the "../data/image_data/tmp" folder. 
 

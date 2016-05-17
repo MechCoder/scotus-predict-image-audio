@@ -12,7 +12,7 @@ The following apply to all scripts that have the term **audio** in them.
 For every lawyer, we have 8 new features which include "Aggressive", "Attractive",
 "Confident", "Intelligent", "Masculine", "Quality", "Trust" and "Win" which are
 are obtained by rating the audio transcript of the lawyer. For every case we have
-16 new features, 8 of which include the averagen3d ratings of all the lawyers across
+16 new features, 8 of which include the averaged ratings of all the lawyers across
 the petitioner side and the other 8 include the averaged ratings of all the lawyers
 across the respondant side.
 

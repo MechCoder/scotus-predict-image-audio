@@ -16,4 +16,4 @@
 6. Add lawyer ratings to the baseline model using **join_to_baseline_model.ipynb**. This script takes the aggregate lawyer ratings on each side (see step 5), and it adds them to the baseline model's input data.
 
 #### That's it! 
-#### ...now just follow the instructions in the "new_model" to use these image features.
+#### ...now just follow the instructions in the "new_model" folder to use these image features.

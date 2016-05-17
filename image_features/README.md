@@ -13,3 +13,6 @@
 5. Aggregate lawyer ratings by side (petitioner/respondent): **cases_join_traits.ipynb** takes the predicted lawyer ratings from section 4, and it averages the ratings across the petitioner or respondent side for each case. It produces an output file which contains petitioner and respondent side ratings for each case where at least one is available. This final output is incorporated as features in the SCOTUS model.
 
 6. Add lawyer ratings to the baseline model using **join_to_baseline_model.ipynb**. This script takes the aggregate lawyer ratings on each side (see step 5), and it adds them to the baseline model's input data.
+
+#### That's it! 
+#### Now follow the instructions in the "new_model" using these image features.

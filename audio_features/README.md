@@ -32,6 +32,7 @@
   * Thus we have “n” rows for every audio file corresponding to “n” data frames of every audio file.
   * In our case n=10
   
+  RUN mfcc_generator_1998-2014.py
   
   Input
    * Unzipped Audio Files between 1998 and 2014
@@ -55,7 +56,7 @@
   
 5. We do string processing lawyer names in the file advocates.csv for easy pattern matching corresponding to (step 2)
 
-  Run 
+  Run modify_advocates.csv
   
   Input
   data/input/advocates.csv
@@ -64,10 +65,9 @@
   data/input/modifiedAdvocates.csv 
   
 6. Joining modifiedAdvocates.csv and mfccFileFeatures_1955_1998.csv based on lawyer’s name. (modifiedAdvocates.csv contains information about the docket and also information regarding if the lawyer was a petitioner or a respondent)
-
-  Run 
   
-  Input modifiedAdvocates.csv
+  Input
+   * data/input/modifiedAdvocates.csv
    * data/input/mfccFileFeatures_1955_1998.csv
   
   Output

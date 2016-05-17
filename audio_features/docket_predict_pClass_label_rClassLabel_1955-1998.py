@@ -22,7 +22,7 @@ from sklearn.metrics import mean_squared_error
 from sklearn.dummy import DummyClassifier
 
 columns = ['zAggressive', 'zAttractive', 'zConfident','zIntel', 'zMasculine', 'zQuality', 'zTrust','zWin']
-mfcc_audio = pd.read_csv("data/output/mfcc_with_ratings.csv")
+mfcc_audio = pd.read_csv("data/input/mfcc_with_ratings1998-2014.csv")
 mfcc_audio.drop(["Unnamed: 0"], inplace=True, axis=1)
 
 mfcc_audio[columns] = (mfcc_audio[columns] >= 0.0).astype(np.int32)
@@ -64,7 +64,7 @@ for i, col in enumerate(columns):
 
 # In[63]:
 
-rawAudioPR1955To1998 = pd.read_csv("restData/modifiedInput/mfcc_1955_p_r.csv")
+rawAudioPR1955To1998 = pd.read_csv("data/input/mfcc_1955-1998_p_r.csv")
 
 
 # In[64]:
@@ -156,10 +156,5 @@ p_r_docket_combined.columns
 
 # In[84]:
 
-p_r_docket_combined.to_csv("restData/modifiedInput/docket_p_r_audioCombined.csv")
-
-
-# In[ ]:
-
-audio_files = pd.read_csv("data/pilot6b_long_only_f_n_outcomes.csv")
+p_r_docket_combined.to_csv("data/input/docket_p_r_audio_ratings_1955_1998.csv")
 

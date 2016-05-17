@@ -68,3 +68,4 @@ mfccColumns = np.array(list(range(1,131)))
 fileFeatureColumns = np.concatenate ((np.array(["docket","lawyer_name"]) , mfccColumns))
 fileFeatureDf=pd.DataFrame(fileFeatureLongValues, columns=fileFeatureColumns)
 fileFeatureDf.to_csv("data/input/mfccFileFeatures_1955_1998.csv")
+

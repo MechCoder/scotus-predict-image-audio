@@ -5,8 +5,8 @@
 
 import pandas as pd
 from model import *
-partAudioData = pd.read_csv("restData/modifiedInput/docket_p_r_audioSplit.csv")
-restAudioData = pd.read_csv("restData/modifiedInput/docket_p_r_audioCombined.csv")
+partAudioData = pd.read_csv("data/input/docket_p_r_audio_ratings_1998_2014.csv")
+restAudioData = pd.read_csv("data/input/docket_p_r_audio_ratings_1955_1998.csv")
 
 for addedFeature in added_features:
     restAudioData[addedFeature][restAudioData[addedFeature] <= 0]=-1
@@ -48,7 +48,7 @@ completeAudioData.shape
 
 # In[10]:
 
-completeAudioData.to_csv("data/modifiedInput/completeAudioDataClssification.csv")
+completeAudioData.to_csv("data/input/docket_p_r_audio_ratings_1955-2014.csv")
 
 
 # In[ ]:

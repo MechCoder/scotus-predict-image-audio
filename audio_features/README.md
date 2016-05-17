@@ -1,5 +1,7 @@
 ### Steps to generate Audio Features
 
+Dependency on https://github.com/jameslyons/python_speech_features
+
 1. Joining the continuous ranged voice trait features (z-scores) to the original model.
   * Because there can be multiple lawyers on the petitioner or the respondent side, we average ratings for lawyers on each side.
   * Also, Because there can be multiple mTurk workers rating the same audio clip we average the z-scores
@@ -129,3 +131,6 @@
  Output
   * data/input/audio_binarize_with_raw_data.csv
   * data/input/audio_binarize_with_features.csv
+  
+
+###Go to new_model

@@ -8,12 +8,12 @@
   
   Input : 
   pilot6b_long_only_f_n_outcomes.csv
-  remove_data_unknown.csv
-  remove_features_unknown.csv
+   * remove_data_unknown.csv
+   * remove_features_unknown.csv
   
   Output : 
-  audio_cont_with_raw_data.csv
-  audio_cont_with_features.csv 
+   * audio_cont_with_raw_data.csv
+   * audio_cont_with_features.csv 
 
 2. Every audio clip of lawyer’s opening statements from 1955 - 1998 was processed into fixed number of frames i.e ‘n’ and we obtained the 13 Mel-frequency Cepstral Coefficients (MFCC) of these frames.
   * We vectorized the matrix of every audio clip, thus obtaining “n*13” length vectors for every audio clip from 1955 - 2014.
@@ -23,20 +23,20 @@
   Run mfcc_generator_1955-1998.py
 
   Input
-  Unzipped Audio Files from 1955 to 1998 
+   * Unzipped Audio Files from 1955 to 1998 
   
   Output
-  mfccFileFeatures_1955_1998.csv
+   * mfccFileFeatures_1955_1998.csv
 
 3. Every audio clip of lawyer’s opening statements from 1998 - 2014 was processed into fixed number of frames i.e ‘n’ and we obtained the 13 Mel-frequency Cepstral Coefficients (MFCC) of each these frames for each of these files.
   * Thus we have “n” rows for every audio file corresponding to “n” data frames of every audio file.
   * In our case n=10
    
   Input
-  Unzipped Audio Files between 1998 and 2014
+   * Unzipped Audio Files between 1998 and 2014
 
   Output
-  data/input/mfccFileFeatures_1998_2014.csv
+   * data/input/mfccFileFeatures_1998_2014.csv
 
 4. Join MFCC of every audio clip with mTurk worker rating (z-score)
   a. We  vectorize the MFCC matrix of every audio clip, thus obtaining “n*13” length vectors for every audio clip from 1998 - 2014. (completing step 3)
@@ -46,13 +46,14 @@
   Run merge_mfcc_with_pilot.py
   
   Input
-  data/input/mfccFileFeatures_1998_2014.csv
-  pilot6b_long_only_f_n_outcomes.csv
+   * data/input/mfccFileFeatures_1998_2014.csv
+   * pilot6b_long_only_f_n_outcomes.csv
   
   Output
-  mfcc_with_ratings1998-2014.csv
+   * mfcc_with_ratings1998-2014.csv
   
 5. We do string processing lawyer names in the file advocates.csv for easy pattern matching corresponding to (step 2)
+
   Run 
   
   Input
@@ -63,34 +64,35 @@
   
 6. Joining modifiedAdvocates.csv and mfccFileFeatures_1955_1998.csv based on lawyer’s name. (modifiedAdvocates.csv contains information about the docket and also information regarding if the lawyer was a petitioner or a respondent)
 
-  Run
+  Run 
+  
   Input modifiedAdvocates.csv
-  mfccFileFeatures_1955_1998.csv
+   * mfccFileFeatures_1955_1998.csv
   
   Output
-  advocates_mfcc_merged_p_r_1955-1998.csv
+   * advocates_mfcc_merged_p_r_1955-1998.csv
   
-7. We remove duplicates from advocatesMfccMerged_1955-1998.csv and get into format (docket, pMFCC, rMFCC) as a row where pMFCC and rMFCC are the 130 MFCC features 
+7. We remove duplicates from advocatesMfccMerged_1955-1998.csv and get into format (docket, pMFCC, rMFCC) as a row where pMFCC and rMFCC are the 130 MFCC features
+
   Input
-  advocates_mfcc_merged_p_r_1955-1998.csv
+   * advocates_mfcc_merged_p_r_1955-1998.csv
 
   Output
-  mfcc_1955-1998_p_r.csv
+   * mfcc_1955-1998_p_r.csv
   
 8. 
   a. We binarized the z-scores of the data obtained from (step 4.) by setting a threshold: if a z-score was positive, we replaced it with 1, if it was negative we replaced it with -1. 
   b. We trained and validated a random forest classifier model from the data in the period 1998 - 2014 based on MFCC and human perception binarized score 
   c. We used this trained binary trait prediction model to predict traits of lawyer’s voices for the period 1955 - 1998. 
   
-  Run
-  docket_predict_pClass_label_rClassLabel_1955-1998.py
+  Run docket_predict_pClass_label_rClassLabel_1955-1998.py
   
   Input
-  mfcc_with_ratings1998-2014.csv ………to train and validate the model
-  mfcc_1955-1998_p_r.csv ………to predict unknown binarized voice trait ratings
+   * mfcc_with_ratings1998-2014.csv ………to train and validate the model
+   * mfcc_1955-1998_p_r.csv ………to predict unknown binarized voice trait ratings
 
   Output
-  docket_p_r_audio_ratings_1955_1998.csv
+   * docket_p_r_audio_ratings_1955_1998.csv
   
 9. 
   a. We binarize the z-scores by setting a threshold: if a z-score was positive, we replaced it with 1, if it was negative we replaced it with -1.
@@ -98,19 +100,29 @@
   
   Run docket_pClassLabel_rClassLabel_1955-1998.py
   Input
-  pilot6b_long_only_f_n_outcomes.csv
+   * pilot6b_long_only_f_n_outcomes.csv
   
   Output
-  docket_p_r_audio_ratings_1998_2014.csv
+   * docket_p_r_audio_ratings_1998_2014.csv
 
 10. Basically output of 8 and 9 are in same format but rows belong to different period in time….so we simply stack them vertically 
   Run docket_pClassLabel_rClassLabel_1955-2014.py
 
   Input
-  docket_p_r_audio_ratings_1998_2014.csv
-  docket_p_r_audio_ratings_1955_1998.csv
+   * docket_p_r_audio_ratings_1998_2014.csv
+   * docket_p_r_audio_ratings_1955_1998.csv
   
   Output
-  docket_p_r_audio_ratings_1955-2014.csv
+   * docket_p_r_audio_ratings_1955-2014.csv
   
-11. Joining the binarized voice trait features (from 10) to the original model based on “docket”   Run ScotusData_docket_pClassLabel_rClassLabel.py  Input docket_p_r_audio_ratings_1955-2014.csv remove_data_unknown.csv remove_features_unknown.csv  Output audio_binarize_with_raw_data.csv audio_binarize_with_features.csv
+11. Joining the binarized voice trait features (from 10) to the original model based on “docket” 
+
+ Run ScotusData_docket_pClassLabel_rClassLabel.py
+
+ Input
+  * docket_p_r_audio_ratings_1955-2014.csv
+  * remove_data_unknown.csv remove_features_unknown.csv
+
+ Output
+  * audio_binarize_with_raw_data.csv
+  * audio_binarize_with_features.csv

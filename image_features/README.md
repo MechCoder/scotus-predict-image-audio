@@ -14,4 +14,4 @@
 
 4. Merge all available advocate-case data (1946 - 2014): advocate_extractor.ipynb gathers together all available advocate data and joins it into one data set. This data contains lawyer names and petitioner vs. respondent flag for lawyers in a given case.
 
-5. Aggregate lawyer ratings by side (petitioner/respondent): cases_join_traits.ipynb takes the predicted lawyer ratings from section 4, and it averages the ratings across the petitioner or respondent side for each case. It produces two output files: petitioner_predictions.csv and respondent_predictions.csv which will be joined to the SCOTUS prediction model inputs.
+5. Aggregate lawyer ratings by side (petitioner/respondent): cases_join_traits.ipynb takes the predicted lawyer ratings from section 4, and it averages the ratings across the petitioner or respondent side for each case. It produces an output file which contains petitioner and respondent side ratings for each case where at least one is available. This final output is incorportated as features in the SCOTUS model.

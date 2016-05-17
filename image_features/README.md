@@ -1,9 +1,6 @@
 ## Image feature generation pipeline:
 
-1. Train trait prediction models
-  * **image_HOG_trait_regression.ipynb**: this script trains facial feature prediction models on Bainbridge's face data applying HOG processing. It stores the models in the "../data/image_data/tmp" folder. 
-  * **image_PCA_trait_regression.ipynb**: this script trains facial feature prediction models on Bainbridge's face data without applying HOG processing. It stores the models in the "../data/image_data/tmp" folder.
-  * **PCA_vs_HOG-PCA.md**: this file compares the performance of trait predition models with vs. without HOG processing.
+1. Train trait prediction models using **image_HOG_trait_regression.ipynb**: this script trains facial feature prediction models on Bainbridge's face data applying HOG processing. It stores the models in the "../data/image_data/tmp" folder. 
 
 2. Extract lawyer faces from lawyer images
  * **get_img_and_pdfs.ipynb**: this script takes a batch of results of the mturk lawyer image gathering task (batches are stored in "../data/image_data/mturk") and it downloads and saves all the images to the "lawyer_images/" directory.
